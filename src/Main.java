@@ -20,12 +20,24 @@ public class Main {
 
         for (int i = 0; i < 3; i++) {
             if (augmented_matrix[i][i] == 0) {
-                System.out.println("Bad input");
-                break;
+                for(int j = i + 1; j < 3; j++){
+                    if(augmented_matrix[j][i] != 0.0){
+                        for (int k = 0; k < 4; k++){
+                            double tmp = augmented_matrix[j][k];
+                            augmented_matrix[j][k] = augmented_matrix[i][k];
+                            augmented_matrix[i][k] = tmp;
+                        }
+                    }
+                }
             }
             for (int j = i; j < 3; j++){
                 double temp_coef = augmented_matrix[j][i];
                 if(temp_coef == 0.0){
+                   /*for(int k = i; k < 3; k++){
+                       double tmp = augmented_matrix[k][j];
+                       augmented_matrix[k][j] = augmented_matrix[k + 1][j];
+                       augmented_matrix[j + 1][k] = tmp;
+                   }*/
                     continue;
                 }
                 for (int k = i; k < 4; k++) {
@@ -34,6 +46,9 @@ public class Main {
             }
             for (int j = i; j < 2; j++){
                 for (int k = i; k < 4; k++) {
+                    if(augmented_matrix[j + 1][k] == 0.0){
+                        break;
+                    }
                     augmented_matrix[j + 1][k] = augmented_matrix[j + 1][k] - augmented_matrix[i][k];
                 }
             }
