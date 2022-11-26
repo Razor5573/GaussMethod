@@ -33,11 +33,6 @@ public class Main {
             for (int j = i; j < 3; j++){
                 double temp_coef = augmented_matrix[j][i];
                 if(temp_coef == 0.0){
-                   /*for(int k = i; k < 3; k++){
-                       double tmp = augmented_matrix[k][j];
-                       augmented_matrix[k][j] = augmented_matrix[k + 1][j];
-                       augmented_matrix[j + 1][k] = tmp;
-                   }*/
                     continue;
                 }
                 for (int k = i; k < 4; k++) {
